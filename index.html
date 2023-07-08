@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Movie & TV Series Site</title>
+    <style>
+        * {
+            box-sizing: border-box
+        }
+        
+        body {
+            background-color: #131720;
+            font-family: sans-serif;
+        }
+        
+        h3 {
+            color: white;
+        }
+        
+        .topnav {
+            overflow: hidden;
+            background-color: #131720;
+            padding: 10px;
+        }
+        
+        .topnav a {
+            float: left;
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+        }
+        
+        .topnav {
+            overflow: hidden;
+            background-color: #131720;
+            text-align: right;
+        }
+        
+        .topnav a {
+            float: left;
+            display: block;
+            color: white;
+            text-align: right;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+        }
+        
+        form {
+            background-color: #151f30;
+            width: 300px;
+            height: 43px;
+            border-radius: 11px;
+            display: inline-block;
+            align-items: stretch;
+        }
+        
+        input {
+            all: unset;
+            font: 15px system-ui;
+            color: #fff;
+            height: 100%;
+            width: 100%;
+            padding: 6px 9px;
+        }
+        
+        .thumbnail {
+            height: 350px;
+            width: 300px;
+            border-radius: 19px;
+        }
+        
+        .column {
+            float: left;
+            width: 25%;
+            padding: 1px 1px;
+        }
+        
+        .card {
+            border-radius: 10px;
+            padding: 5px;
+            margin: 5px;
+            text-align: center;
+            background-color: #151f30;
+        }
+        
+        .search-select {
+            padding: 8px;
+            font-size: 16px;
+            border: none;
+            border-radius: 4px;
+            width: 200px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .search-select option {
+            background-color: #fff;
+            color: #333;
+        }
+        
+        .search-select:focus {
+            outline: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="topnav">
+            <a class="logo" href="#">Movies </a>
+            <form id="form">
+                <input id="query" class="search-input" type="text" placeholder="Search movies or TV series...">
+                <button class="search-button" type="submit">Search</button>
+                <select id="select-type" class="search-select">
+                    <option value="movie">Movies</option>
+                    <option value="tv">TV Series</option>
+                </select>
+            </form>
+        </div>
+
+        <section id="section"></section>
+    </div>
+
+    <script>
+        const API_KEY = '41ee980e4b5f05f6693fda00eb7c4fd4';
+        const IMG_PATH = 'https://image.tmdb.org/t/p/w1280';
+        const MOVIE_API = 'https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=' + API_KEY + '&page=1';
+        const TV_API = 'https://api.themoviedb.org/3/discover/tv?sort_by=popularity.desc&api_key=' + API_KEY + '&page=1';
+        const SEARCH_API = 'https://api.themoviedb.org/3/search/';
+
+        const main = document.getElementById("section");
+        const form = document.getElementById("form");
+        const search = document.getElementById("query");
+        const selectType = document.getElementById("select-type");
+        const searchButton = document.getElementById("search-button");
+
+        getMovies(MOVIE_API);
+
+        function getMovies(url) {
+            fetch(url)
+                .then(res => res.json())
+                .then(data => {
+                    displayMovies(data.results);
+                });
+        }
+
+        function displayMovies(results) {
+            main.innerHTML = '';
+
+            results.forEach(element => {
+                const divCard = document.createElement('div');
+                divCard.classList.add('card');
+
+                const divRow = document.createElement('div');
+                divRow.classList.add('row');
+
+                const divColumn = document.createElement('div');
+                divColumn.classList.add('column');
+
+                const image = document.createElement('img');
+                image.classList.add('thumbnail');
+                image.setAttribute('id', 'image');
+
+                const title = document.createElement('h3');
+                divCard.setAttribute('id', 'title');
+
+                const center = document.createElement('center');
+
+                title.innerHTML = element.title || element.name;
+                image.src = IMG_PATH + element.poster_path;
+
+                center.appendChild(image);
+                divCard.appendChild(center);
+                divCard.appendChild(title);
+                divRow.appendChild(divCard);
+                divColumn.appendChild(divRow);
+                main.appendChild(divColumn);
+            });
+        }
+
+        form.addEventListener("submit", (e) => {
+            e.preventDefault();
+            searchMovies();
+        });
+
+        searchButton.addEventListener("click", (e) => {
+            e.preventDefault();
+            searchMovies();
+        });
+
+        function searchMovies() {
+            main.innerHTML = '';
+
+            const searchItem = search.value;
+            const selectedType = selectType.value;
+            const url = SEARCH_API + selectedType + '?api_key=' + API_KEY + '&query=' + searchItem;
+
+            if (searchItem) {
+                getMovies(url);
+                search.value = '';
+            } else {
+                if (selectedType === 'movie') {
+                    getMovies(MOVIE_API);
+                } else if (selectedType === 'tv') {
+                    getMovies(TV_API);
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>
