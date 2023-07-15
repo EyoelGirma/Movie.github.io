@@ -2,126 +2,48 @@
 <html>
 
 <head>
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
     <title>Movie & TV Series Site</title>
-    <style>
-        * {
-            box-sizing: border-box
-        }
-        
-        body {
-            background-color: #131720;
-            font-family: sans-serif;
-        }
-        
-        h3 {
-            color: white;
-        }
-        
-        .topnav {
-            overflow: hidden;
-            background-color: #131720;
-            padding: 10px;
-        }
-        
-        .topnav a {
-            float: left;
-            display: block;
-            color: white;
-            text-align: center;
-            padding: 14px 16px;
-            text-decoration: none;
-            font-size: 1.2rem;
-            text-transform: uppercase;
-        }
-        
-        .topnav {
-            overflow: hidden;
-            background-color: #131720;
-            text-align: right;
-        }
-        
-        .topnav a {
-            float: left;
-            display: block;
-            color: white;
-            text-align: right;
-            padding: 14px 16px;
-            text-decoration: none;
-            font-size: 1.2rem;
-            text-transform: uppercase;
-        }
-        
-        form {
-            background-color: #151f30;
-            width: 300px;
-            height: 43px;
-            border-radius: 11px;
-            display: inline-block;
-            align-items: stretch;
-        }
-        
-        input {
-            all: unset;
-            font: 15px system-ui;
-            color: #fff;
-            height: 100%;
-            width: 100%;
-            padding: 6px 9px;
-        }
-        
-        .thumbnail {
-            height: 350px;
-            width: 300px;
-            border-radius: 19px;
-        }
-        
-        .column {
-            float: left;
-            width: 25%;
-            padding: 1px 1px;
-        }
-        
-        .card {
-            border-radius: 10px;
-            padding: 5px;
-            margin: 5px;
-            text-align: center;
-            background-color: #151f30;
-        }
-        
-        .search-select {
-            padding: 8px;
-            font-size: 16px;
-            border: none;
-            border-radius: 4px;
-            width: 200px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-        
-        .search-select option {
-            background-color: #fff;
-            color: #333;
-        }
-        
-        .search-select:focus {
-            outline: none;
-        }
-    </style>
+
 </head>
 
 <body>
-    <div class="container">
-        <div class="topnav">
-            <a class="logo" href="#">Movies </a>
-            <form id="form">
-                <input id="query" class="search-input" type="text" placeholder="Search movies or TV series...">
-                <button class="search-button" type="submit">Search</button>
-                <select id="select-type" class="search-select">
-                    <option value="movie">Movies</option>
-                    <option value="tv">TV Series</option>
-                </select>
-            </form>
+    <header class="header">
+        <div class="container">
+            <div class="header-area">
+                <div class="logo">
+                    <a href="index.html"><img src="/img/logo.png" alt="logo"></a>
+                </div>
+                <div class="header-right">
+                    <form id="form">
+                        <input id="query" class="search-input" type="text" placeholder="Search movies or TV series...">
+                        <button class="search-button" type="submit">Search</button>
+                        <select id="select-type" class="search-select">
+                            <option value="movie">Movies</option>
+                            <option value="tv">TV Series</option>
+                        </select>
+                    </form>
+                </div>
+
+            </div>
+
         </div>
+        </div>
+    </header>
+    <!-- breadcrumb area start -->
+    <section class="breadcrumb-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breadcrumb-area-content">
+                        <h1>Movies Page</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="container">
+
 
         <section id="section"></section>
     </div>
