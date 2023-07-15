@@ -1,0 +1,256 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,900');
+body {
+    line-height: 24px;
+    font-size: 14px;
+    color: #141c2c;
+    background: #13151f;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    position: relative;
+}
+
+
+/*----------------------------
+---------- RESET CSS ---------
+----------------------------*/
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: 500;
+    color: #fff;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+    margin: 0px;
+}
+
+h1 {
+    font-size: 36px;
+}
+
+h2 {
+    font-size: 30px;
+}
+
+h4 {
+    font-size: 18px;
+}
+
+h6 {
+    font-size: 14px;
+}
+
+a {
+    transition: 0.6s;
+}
+
+a,
+a:hover {
+    color: #fff;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+
+/*-------- HEADER AREA CSS START --------*/
+
+.header {
+    padding: 18px 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 99;
+}
+
+.header-area {
+    display: grid;
+    grid-template-rows: repeat(2, 1fr);
+    grid-template-columns: repeat(12, 1fr);
+    align-items: center;
+    grid-gap: 20px;
+}
+
+.logo {
+    grid-column: span 2;
+    grid-row: span 2;
+    padding-right: 15px;
+}
+
+.header-right {
+    grid-column: span 10;
+    text-align: right;
+    display: flex;
+    align-items: center;
+}
+
+.mainmenu li ul {
+    position: absolute;
+    top: 100%;
+    background: #000;
+    padding: 5px 15px;
+    left: 0;
+    text-align: left;
+    min-width: 200px;
+    transform: scaleY(0);
+    transition: all 0.4s;
+}
+
+.mainmenu li a.active,
+.mainmenu li a:hover {
+    color: #eb315a;
+}
+
+.header-right form {
+    display: flex;
+    max-width: 380px;
+    border: 1px solid #eee;
+    border-radius: 30px;
+    margin-left: auto;
+}
+
+.header-right form button {
+    background: transparent;
+    color: #fff;
+    border: none;
+    padding-right: 10px;
+}
+
+option {
+    color: #000;
+}
+
+.header-right form select {
+    background: url('../img/select-icon.png') no-repeat right center;
+    color: #fff;
+    padding: 0 20px 0 30px;
+    border: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+.header-right form input {
+    width: auto;
+    background: transparent;
+    color: #fff;
+    border: none;
+    margin: 0;
+    border-left: 1px solid #ddd;
+    margin-left: 20px;
+}
+
+.header-right ul li a:hover {
+    color: #eb315a;
+}
+
+.header-right ul li {
+    padding: 8px 0 0;
+    margin-left: 15px;
+    display: inline-block;
+}
+
+
+/*--------- HEADER AREA CSS END ---------*/
+
+
+/*----------------------------------
+---- Movie details PAGE CSS START ----
+------------------------------------*/
+
+.breadcrumb-area {
+    position: relative;
+    background-image: url('/img/breadcrumb.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    padding: 280px 0 200px;
+}
+
+.breadcrumb-area-content {
+    text-align: center;
+}
+
+.breadcrumb-area-content h1 {
+    font-size: 60px;
+}
+
+.transformers-box {
+    padding: 35px;
+    box-shadow: 0 0 20px #000000;
+    position: relative;
+}
+
+
+/*----------------------------------
+----- Movie details PAGE CSS END ----
+-----------------------------------*/
+
+form {
+    background-color: #151f30;
+    width: 300px;
+    height: 43px;
+    border-radius: 11px;
+    display: inline-block;
+    align-items: stretch;
+}
+
+input {
+    all: unset;
+    font: 15px system-ui;
+    color: #312e2e;
+    height: 100%;
+    width: 100%;
+    padding: 6px 9px;
+}
+
+.thumbnail {
+    height: 350px;
+    width: 300px;
+    border-radius: 19px;
+}
+
+.column {
+    float: left;
+    width: 25%;
+    padding: 1px 1px;
+}
+
+.card {
+    border-radius: 10px;
+    padding: 5px;
+    margin: 5px;
+    text-align: center;
+    background-color: #151f30;
+}
+
+.search-select {
+    padding: 8px;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    width: 200px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.search-select option {
+    background-color: #610404;
+    color: #333;
+}
+
+.search-select:focus {
+    outline: none;
+}
